@@ -1204,7 +1204,9 @@ section[id],
   box-shadow: 0 4px 10px var(--accent-glow);
 }
 
-.timeline-card h4 {
+.timeline-card h3,
+.timeline-card h4,
+.timeline-heading {
   font-size: 1.05rem;
   font-weight: 700;
   color: var(--text-main);
@@ -2144,7 +2146,9 @@ section[id],
   gap: 60px;
 }
 
-.footer-col h4 {
+.footer-col h3,
+.footer-col h4,
+.footer-heading {
   font-family: var(--font-heading);
   font-size: 0.95rem;
   font-weight: 800;
@@ -2308,6 +2312,20 @@ section[id],
 
   .nav-menu.open {
     display: flex;
+  }
+
+  .nav-menu .nav-link {
+    padding: 12px 16px;
+    font-size: 1.05rem;
+    display: flex;
+    align-items: center;
+    min-height: 48px;
+    border-radius: var(--radius-sm);
+  }
+
+  .nav-menu .nav-link:hover,
+  .nav-menu .nav-link:active {
+    background-color: var(--bg-subtle);
   }
 
   .nav-cta-btn {

@@ -67,7 +67,9 @@ document.addEventListener('DOMContentLoaded', () => {
   if (tabSvg && tabPng && mascotSvgView && mascotPngView) {
     tabSvg.addEventListener('click', () => {
       tabSvg.classList.add('active');
+      tabSvg.setAttribute('aria-selected', 'true');
       tabPng.classList.remove('active');
+      tabPng.setAttribute('aria-selected', 'false');
       mascotSvgView.style.display = 'block';
       mascotPngView.style.display = 'none';
       showToast('已切換至 ⚡ 靈動向量版（眼球隨滑鼠移動）');
@@ -75,7 +77,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
     tabPng.addEventListener('click', () => {
       tabPng.classList.add('active');
+      tabPng.setAttribute('aria-selected', 'true');
       tabSvg.classList.remove('active');
+      tabSvg.setAttribute('aria-selected', 'false');
       mascotSvgView.style.display = 'none';
       mascotPngView.style.display = 'flex';
       showToast('已切換至 🎨 均君原創高精度手繪手稿');

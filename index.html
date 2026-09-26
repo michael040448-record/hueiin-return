@@ -53,7 +53,11 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&family=Noto+Sans+TC:wght@400;500;700;900&display=swap" rel="stylesheet">
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@600;700;800&family=Noto+Sans+TC:wght@400;700&display=swap">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@600;700;800&family=Noto+Sans+TC:wght@400;700&display=swap" media="print" onload="this.media='all'">
+  <noscript>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@600;700;800&family=Noto+Sans+TC:wght@400;700&display=swap">
+  </noscript>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -153,14 +157,14 @@
 
             <div class="mascot-card-header">
               <span class="mascot-badge-tag">首席好奇官 · MASCOT IP</span>
-              <div class="mascot-view-toggle" role="tablist">
-                <button class="mascot-toggle-btn active" id="tabSvg" title="均君原創向量動態版">動態</button>
-                <button class="mascot-toggle-btn" id="tabPng" title="均君原創手繪插畫版">手繪</button>
+              <div class="mascot-view-toggle" role="tablist" aria-label="吉祥物視角切換">
+                <button class="mascot-toggle-btn active" id="tabSvg" role="tab" aria-selected="true" aria-controls="mascotSvgView" title="均君原創向量動態版">動態</button>
+                <button class="mascot-toggle-btn" id="tabPng" role="tab" aria-selected="false" aria-controls="mascotPngView" title="均君原創手繪插畫版">手繪</button>
               </div>
             </div>
 
             <!-- 視圖 1：均君原創標準向量版 (眼球隨滑鼠移動) -->
-            <div class="mascot-svg-view" id="mascotSvgView">
+            <div class="mascot-svg-view" id="mascotSvgView" role="tabpanel" aria-labelledby="tabSvg">
               <svg class="interactive-mascot" id="mascotSvg" viewBox="0 0 410.49 405.61" xmlns="http://www.w3.org/2000/svg">
                 <g transform="translate(-336.43, 788.82) scale(1, -1)">
                   <!-- 身體與耳朵頂部火花 -->
@@ -197,7 +201,7 @@
             </div>
 
             <!-- 視圖 2：原創手繪插畫高清晰版 -->
-            <div class="mascot-png-view" id="mascotPngView" style="display: none;" title="均君原創高精度插畫手稿">
+            <div class="mascot-png-view" id="mascotPngView" role="tabpanel" aria-labelledby="tabPng" style="display: none;" title="均君原創高精度插畫手稿">
               <img src="ip orange-02.png" id="mascotPngImg" class="mascot-png-img" alt="暉映自學怪人原創手稿" />
             </div>
 
@@ -226,21 +230,21 @@
               <div class="timeline-card">
                 <div class="timeline-badge">01</div>
                 <div>
-                  <h4>體育保送生的自律與抗壓力</h4>
+                  <h3 class="timeline-heading">體育保送生的自律與抗壓力</h3>
                   <p>運動員的訓練磨礪出在高壓競爭中快速復原的心理素質，習慣把每一次市場反饋當作校準訓練。</p>
                 </div>
               </div>
               <div class="timeline-card">
                 <div class="timeline-badge">02</div>
                 <div>
-                  <h4>國立中山大學 機械與機電工程學系</h4>
+                  <h3 class="timeline-heading">國立中山大學 機械與機電工程學系</h3>
                   <p>深植因果關係、系統控制與反饋迴路思維。看懂圖紙與物性，聽得懂工廠廠長的語言。</p>
                 </div>
               </div>
               <div class="timeline-card">
                 <div class="timeline-badge">03</div>
                 <div>
-                  <h4>剛退伍即成立「暉映 H.I.T (Say it Clear.)」</h4>
+                  <h3 class="timeline-heading">剛退伍即成立「暉映 H.I.T (Say it Clear.)」</h3>
                   <p>跳過安穩路徑，直接投入台灣傳產出海拓銷戰役。從東南亞開版到北美亞馬遜直面國際市場。</p>
                 </div>
               </div>
@@ -408,7 +412,7 @@
               </p>
               <div class="record-footer">
                 <span class="read-time">約 6 分鐘閱讀</span>
-                <a href="records/car-window-deflector.html" class="read-link">閱讀全文 →</a>
+                <a href="records/car-window-deflector.html" class="read-link" aria-label="閱讀專欄全文：在台灣，廉價的外貼式晴雨窗是贈品，但我們想把它做成精密工藝">閱讀全文 →</a>
               </div>
             </article>
 
@@ -428,7 +432,7 @@
               </p>
               <div class="record-footer">
                 <span class="read-time">約 5 分鐘閱讀</span>
-                <a href="records/amazon-algorithm-log.html" class="read-link">閱讀全文 →</a>
+                <a href="records/amazon-algorithm-log.html" class="read-link" aria-label="閱讀專欄全文：剛退伍接電商投廣，北上亞馬遜官方集訓：理工人的開車指標論">閱讀全文 →</a>
               </div>
             </article>
 
@@ -448,7 +452,7 @@
               </p>
               <div class="record-footer">
                 <span class="read-time">約 7 分鐘閱讀</span>
-                <a href="records/game-theory-memory.html" class="read-link">閱讀全文 →</a>
+                <a href="records/game-theory-memory.html" class="read-link" aria-label="閱讀專欄全文：賽局、記憶與真實：大腦如何面對創傷與影像的膜">閱讀全文 →</a>
               </div>
             </article>
 
@@ -468,7 +472,7 @@
               </p>
               <div class="record-footer">
                 <span class="read-time">約 6 分鐘閱讀</span>
-                <a href="records/amazon-algorithm-log.html" class="read-link">閱讀全文 →</a>
+                <a href="records/amazon-algorithm-log.html" class="read-link" aria-label="閱讀專欄全文：從代工廠到國際終端：製造業出海如何靠技術規格轉譯拿回定價權">閱讀全文 →</a>
               </div>
             </article>
           </div>
@@ -574,14 +578,14 @@
 
       <div class="footer-links">
         <div class="footer-col">
-          <h4>核心導航</h4>
+          <h3 class="footer-heading">核心導航</h3>
           <a href="#about">創辦人故事</a>
           <a href="#services">四大核心賦能</a>
           <a href="#casestudy">比德堡晴雨窗</a>
           <a href="#records">Re!cord 思考專欄</a>
         </div>
         <div class="footer-col">
-          <h4>社群與聯絡</h4>
+          <h3 class="footer-heading">社群與聯絡</h3>
           <a href="#contact">線上預約表單</a>
           <a href="https://www.threads.com/@record_learning_lab" target="_blank" rel="noopener">Threads (@record_learning_lab)</a>
           <a href="https://www.instagram.com/record_learning_lab" target="_blank" rel="noopener">Instagram</a>
