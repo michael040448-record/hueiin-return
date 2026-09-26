@@ -59,6 +59,8 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@600;700;800&display=swap">
   </noscript>
   <link rel="stylesheet" href="style.css">
+  <!-- 預先載入首屏吉祥物標準圖片 (LCP 最佳化加速) -->
+  <link rel="preload" as="image" href="mascot-lcp.png" fetchpriority="high">
 </head>
 <body>
 
@@ -159,9 +161,16 @@
               <span class="mascot-badge-tag">首席好奇官 · MASCOT IP</span>
             </div>
 
-            <!-- 均君原創靈動向量版 (眼球隨滑鼠與觸控移動) -->
+            <!-- 均君原創靈動版 (標準 LCP 圖片底圖 + 向量眼球游標追蹤) -->
             <div class="mascot-svg-view" id="mascotSvgView">
-              <svg class="interactive-mascot" id="mascotSvg" viewBox="0 0 410.49 405.61" xmlns="http://www.w3.org/2000/svg">
+              <img src="mascot-lcp.png" 
+                   alt="暉映 ✕ 呂口 首席好奇官吉祥物" 
+                   class="mascot-lcp-img" 
+                   width="411" 
+                   height="406" 
+                   fetchpriority="high" 
+                   decoding="async">
+              <svg class="interactive-mascot" id="mascotSvg" viewBox="0 0 410.49 405.61" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
                 <g transform="translate(-336.43, 788.82) scale(1, -1)">
                   <!-- 身體與耳朵頂部火花 -->
                   <path d="M 572.02 562.57 L 559.56 585.23 C 551.79 599.38, 531.57 599.38, 523.79 585.23 L 511.33 562.57 C 506.84 554.41, 512.71 544.39, 521.99 544.39 L 561.37 544.39 C 570.64 544.39, 576.51 554.41, 572.02 562.57 Z" fill="var(--accent-primary, #EB8626)" />
