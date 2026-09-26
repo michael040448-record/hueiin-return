@@ -31,18 +31,18 @@
   --text-muted: #5c6270;
   --text-inverse: #ffffff;
 
-  --accent-primary: var(--c-orange);
+  --accent-primary: #b85d10;
   --accent-secondary: var(--c-blue);
-  --accent-glow: rgba(236, 135, 38, 0.25);
+  --accent-glow: rgba(184, 93, 16, 0.25);
   --mascot-pupil: #d36f1d;
 
   --nav-bg: rgba(251, 251, 253, 0.85);
   --card-shadow: 0 10px 30px rgba(8, 59, 135, 0.06), 0 2px 8px rgba(0, 0, 0, 0.04);
-  --card-hover-shadow: 0 20px 40px rgba(236, 135, 38, 0.15), 0 8px 16px rgba(0, 0, 0, 0.06);
+  --card-hover-shadow: 0 20px 40px rgba(184, 93, 16, 0.15), 0 8px 16px rgba(0, 0, 0, 0.06);
 
-  /* 字體系統 */
-  --font-heading: "Hiragino Kaku Gothic Std", "ヒラギノ角ゴ Std W8", "Plus Jakarta Sans", "Noto Sans TC", sans-serif;
-  --font-body: "Plus Jakarta Sans", "Noto Sans TC", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  /* 字體系統 (優先以高精度系統原生中文字型無縫瞬時渲染，免去外部字型阻塞) */
+  --font-heading: "Plus Jakarta Sans", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "PingFang TC", "Microsoft JhengHei", sans-serif;
+  --font-body: "Plus Jakarta Sans", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "PingFang TC", "Microsoft JhengHei", sans-serif;
 
   --radius-sm: 8px;
   --radius-md: 16px;
@@ -520,56 +520,6 @@ section[id],
   border-radius: var(--radius-pill);
 }
 
-.mascot-view-toggle {
-  display: inline-flex;
-  align-items: center;
-  background: var(--bg-subtle);
-  border: 1px solid var(--border-subtle);
-  border-radius: var(--radius-pill);
-  padding: 3px;
-  gap: 3px;
-}
-
-.mascot-toggle-btn,
-.view-tab {
-  appearance: none;
-  -webkit-appearance: none;
-  background: transparent;
-  border: 1px solid transparent;
-  outline: none;
-  font-family: var(--font-body);
-  font-size: 0.78rem;
-  font-weight: 700;
-  color: var(--text-muted);
-  padding: 5px 14px;
-  border-radius: var(--radius-pill);
-  cursor: pointer;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 4px;
-  transition: all var(--transition-fast);
-  white-space: nowrap;
-}
-
-.mascot-toggle-btn:hover,
-.view-tab:hover {
-  color: var(--text-main);
-}
-
-.mascot-toggle-btn.active,
-.view-tab.active {
-  background: var(--accent-primary);
-  color: #ffffff;
-  border-color: var(--accent-primary);
-  box-shadow: 0 2px 8px var(--accent-glow);
-  font-weight: 800;
-}
-
-.mascot-toggle-btn:hover:not(.active) {
-  color: var(--text-main);
-}
-
 .mascot-svg-view,
 .mascot-interactive {
   position: relative;
@@ -591,33 +541,6 @@ section[id],
 
 .mascot-svg-view:hover .interactive-mascot,
 .mascot-interactive:hover .mascot-svg {
-  transform: scale(1.05);
-}
-
-/* 原創手繪插畫高清晰視圖 */
-.mascot-png-view {
-  position: relative;
-  z-index: 1;
-  width: 220px;
-  height: 220px;
-  margin: 0 auto 20px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  user-select: none;
-  transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
-}
-
-.mascot-png-img {
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
-  filter: drop-shadow(0 12px 24px rgba(0, 0, 0, 0.12));
-  transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
-}
-
-.mascot-png-view:hover .mascot-png-img {
   transform: scale(1.05);
 }
 
@@ -664,7 +587,8 @@ section[id],
   width: 100%;
   height: 100%;
   pointer-events: none;
-  z-index: 3;
+  z-index: 1;
+  display: none;
 }
 
 /* --------------------------------------------------------------------------
@@ -2537,8 +2461,7 @@ section[id],
   }
 
   .mascot-svg-view,
-  .mascot-interactive,
-  .mascot-png-view {
+  .mascot-interactive {
     width: 180px;
     height: 180px;
     margin: 0 auto 14px;
@@ -2820,8 +2743,7 @@ section[id],
   }
 
   .mascot-svg-view,
-  .mascot-interactive,
-  .mascot-png-view {
+  .mascot-interactive {
     width: 155px;
     height: 155px;
   }

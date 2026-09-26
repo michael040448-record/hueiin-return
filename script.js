@@ -18,7 +18,6 @@ document.addEventListener('DOMContentLoaded', () => {
   const toggleIcon = themeToggle ? themeToggle.querySelector('.toggle-icon') : null;
   const toggleText = themeToggle ? themeToggle.querySelector('.toggle-text') : null;
   const htmlEl = document.documentElement;
-  const mascotPngImg = document.getElementById('mascotPngImg');
 
   const savedTheme = localStorage.getItem('hueiinturn_theme') || 'default';
   applyTheme(savedTheme);
@@ -38,53 +37,21 @@ document.addEventListener('DOMContentLoaded', () => {
     if (theme === 'zlab') {
       toggleIcon.textContent = '☀️';
       toggleText.textContent = '日常模式';
-      if (mascotPngImg) {
-        mascotPngImg.src = '吉祥物.png';
-      }
     } else {
       toggleIcon.textContent = '🧪';
       toggleText.textContent = 'ZLAB 模式';
-      if (mascotPngImg) {
-        mascotPngImg.src = 'ip orange-02.png';
-      }
     }
   }
 
 
   // =========================================================================
-  // 2. 好奇小怪人雙視圖切換 (靈動互動版 ⇄ 原創手繪版) 與眼球追蹤
+  // 2. 好奇小怪人靈動互動版 (眼球游標與觸控追蹤 ＋ 點擊金句)
   // =========================================================================
-  const tabSvg = document.getElementById('tabSvg') || document.getElementById('viewBtnSvg');
-  const tabPng = document.getElementById('tabPng') || document.getElementById('viewBtnPng');
-  const mascotSvgView = document.getElementById('mascotSvgView') || document.getElementById('mascotInteractive');
-  const mascotPngView = document.getElementById('mascotPngView');
+  const mascotSvgView = document.getElementById('mascotSvgView');
   const leftPupil = document.getElementById('leftPupil');
   const rightPupil = document.getElementById('rightPupil');
   const mascotMsg = document.getElementById('mascotMessage');
   const mascotCard = document.querySelector('.mascot-card');
-
-  // 視圖切換 (動態向量 ⇄ 手繪原作)
-  if (tabSvg && tabPng && mascotSvgView && mascotPngView) {
-    tabSvg.addEventListener('click', () => {
-      tabSvg.classList.add('active');
-      tabSvg.setAttribute('aria-selected', 'true');
-      tabPng.classList.remove('active');
-      tabPng.setAttribute('aria-selected', 'false');
-      mascotSvgView.style.display = 'block';
-      mascotPngView.style.display = 'none';
-      showToast('已切換至 ⚡ 靈動向量版（眼球隨滑鼠移動）');
-    });
-
-    tabPng.addEventListener('click', () => {
-      tabPng.classList.add('active');
-      tabPng.setAttribute('aria-selected', 'true');
-      tabSvg.classList.remove('active');
-      tabSvg.setAttribute('aria-selected', 'false');
-      mascotSvgView.style.display = 'none';
-      mascotPngView.style.display = 'flex';
-      showToast('已切換至 🎨 均君原創高精度手繪手稿');
-    });
-  }
 
   // 小怪人實戰金句庫
   const mascotQuotes = [
@@ -212,6 +179,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   function createSparkBurst(originX, originY, count = 50) {
     if (!canvas || !ctx) return;
+    canvas.style.display = 'block';
     const heroRect = canvas.parentElement.getBoundingClientRect();
     const x = originX - heroRect.left;
     const y = originY - heroRect.top;
@@ -244,6 +212,7 @@ document.addEventListener('DOMContentLoaded', () => {
       cancelAnimationFrame(animationId);
       animationId = null;
       ctx.clearRect(0, 0, canvas.width, canvas.height);
+      canvas.style.display = 'none';
     }
   }
 

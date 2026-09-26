@@ -53,10 +53,10 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@600;700;800&family=Noto+Sans+TC:wght@400;700&display=swap">
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@600;700;800&family=Noto+Sans+TC:wght@400;700&display=swap" media="print" onload="this.media='all'">
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@600;700;800&display=swap">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" media="print" onload="this.media='all'">
   <noscript>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@600;700;800&family=Noto+Sans+TC:wght@400;700&display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@600;700;800&display=swap">
   </noscript>
   <link rel="stylesheet" href="style.css">
 </head>
@@ -150,21 +150,17 @@
           </div>
         </div>
 
-        <!-- 互動吉祥物區塊 (均君原創高精度向量版 + 眼球游標追蹤 + 手繪切換) -->
+        <!-- 互動吉祥物區塊 (均君原創高精度向量版 + 眼球游標追蹤) -->
         <div class="hero-mascot-wrapper">
           <div class="mascot-card">
             <div class="mascot-glow"></div>
 
             <div class="mascot-card-header">
               <span class="mascot-badge-tag">首席好奇官 · MASCOT IP</span>
-              <div class="mascot-view-toggle" role="tablist" aria-label="吉祥物視角切換">
-                <button class="mascot-toggle-btn active" id="tabSvg" role="tab" aria-selected="true" aria-controls="mascotSvgView" title="均君原創向量動態版">動態</button>
-                <button class="mascot-toggle-btn" id="tabPng" role="tab" aria-selected="false" aria-controls="mascotPngView" title="均君原創手繪插畫版">手繪</button>
-              </div>
             </div>
 
-            <!-- 視圖 1：均君原創標準向量版 (眼球隨滑鼠移動) -->
-            <div class="mascot-svg-view" id="mascotSvgView" role="tabpanel" aria-labelledby="tabSvg">
+            <!-- 均君原創靈動向量版 (眼球隨滑鼠與觸控移動) -->
+            <div class="mascot-svg-view" id="mascotSvgView">
               <svg class="interactive-mascot" id="mascotSvg" viewBox="0 0 410.49 405.61" xmlns="http://www.w3.org/2000/svg">
                 <g transform="translate(-336.43, 788.82) scale(1, -1)">
                   <!-- 身體與耳朵頂部火花 -->
@@ -200,11 +196,6 @@
               </svg>
             </div>
 
-            <!-- 視圖 2：原創手繪插畫高清晰版 -->
-            <div class="mascot-png-view" id="mascotPngView" role="tabpanel" aria-labelledby="tabPng" style="display: none;" title="均君原創高精度插畫手稿">
-              <img src="ip orange-02.png" id="mascotPngImg" class="mascot-png-img" alt="暉映自學怪人原創手稿" />
-            </div>
-
             <div class="mascot-dialogue">
               <span class="dialogue-tag">Re!cord 首席好奇官</span>
               <p id="mascotMessage">「嘿！我們來打破規則，搞點有實質商業價值的名堂！」</p>
@@ -213,7 +204,7 @@
         </div>
       </div>
 
-      <canvas id="sparkCanvas"></canvas>
+      <canvas id="sparkCanvas" style="display: none;"></canvas>
     </section>
 
     <!-- 創辦人故事區塊 (ABOUT MICHAEL SU) -->
