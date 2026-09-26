@@ -106,9 +106,10 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // 眼球追蹤游標
+  // 眼球追蹤游標與觸控移動
   const maxOffset = 7;
-  window.addEventListener('mousemove', (e) => {
+
+  function updatePupils(clientX, clientY) {
     if (!leftPupil || !rightPupil || (mascotSvgView && mascotSvgView.style.display === 'none')) return;
 
     const leftRect = leftPupil.getBoundingClientRect();
@@ -119,11 +120,11 @@ document.addEventListener('DOMContentLoaded', () => {
     const rightCenterX = rightRect.left + rightRect.width / 2;
     const rightCenterY = rightRect.top + rightRect.height / 2;
 
-    const leftAngle = Math.atan2(e.clientY - leftCenterY, e.clientX - leftCenterX);
-    const rightAngle = Math.atan2(e.clientY - rightCenterY, e.clientX - rightCenterX);
+    const leftAngle = Math.atan2(clientY - leftCenterY, clientX - leftCenterX);
+    const rightAngle = Math.atan2(clientY - rightCenterY, clientX - rightCenterX);
 
-    const leftDist = Math.hypot(e.clientX - leftCenterX, e.clientY - leftCenterY);
-    const rightDist = Math.hypot(e.clientX - rightCenterX, e.clientY - rightCenterY);
+    const leftDist = Math.hypot(clientX - leftCenterX, clientY - leftCenterY);
+    const rightDist = Math.hypot(clientX - rightCenterX, clientY - rightCenterY);
 
     const leftR = Math.min(maxOffset, leftDist * 0.04);
     const rightR = Math.min(maxOffset, rightDist * 0.04);
@@ -136,7 +137,17 @@ document.addEventListener('DOMContentLoaded', () => {
     // 在 scale(1, -1) 翻轉座標系中，Y 軸反向確保瞳孔精確追隨游標
     leftPupil.style.transform = `translate(${leftDx}px, ${-leftDy}px)`;
     rightPupil.style.transform = `translate(${rightDx}px, ${-rightDy}px)`;
+  }
+
+  window.addEventListener('mousemove', (e) => {
+    updatePupils(e.clientX, e.clientY);
   });
+
+  window.addEventListener('touchmove', (e) => {
+    if (e.touches && e.touches.length > 0) {
+      updatePupils(e.touches[0].clientX, e.touches[0].clientY);
+    }
+  }, { passive: true });
 
 
   // =========================================================================
@@ -273,13 +284,15 @@ document.addEventListener('DOMContentLoaded', () => {
 
   if (mobileToggle && navMenu) {
     mobileToggle.addEventListener('click', () => {
-      navMenu.classList.toggle('open');
+      const isOpen = navMenu.classList.toggle('open');
+      mobileToggle.classList.toggle('open', isOpen);
     });
 
     const menuLinks = navMenu.querySelectorAll('a');
     menuLinks.forEach(link => {
       link.addEventListener('click', () => {
         navMenu.classList.remove('open');
+        mobileToggle.classList.remove('open');
       });
     });
   }
