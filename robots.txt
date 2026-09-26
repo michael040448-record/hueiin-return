@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://michael040448-record.github.io/hueiin-return/sitemap.xml
