@@ -305,7 +305,7 @@ document.addEventListener('DOMContentLoaded', () => {
       ]
     },
     books: {
-      path: 'BOOK CLUB · 哲遠讀書會',
+      path: 'BOOK CLUB · 有品味讀書會',
       color: '#083b87',
       status: '● 每週讀書會精選推薦',
       items: [
