@@ -2835,3 +2835,415 @@ section[id],
   }
 }
 
+/* ==========================================================================
+   8. 哲遠思考檔案庫 (The Archive) ✕ 新粗獷資料夾 ✕ 雙軌 CTA 樣式
+   ========================================================================== */
+
+.archive-wrapper {
+  max-width: 900px;
+  margin: 0 auto;
+  background: #faf9f5;
+  border: 2.5px solid #18191f;
+  border-radius: 24px;
+  padding: 28px 24px;
+  box-shadow: 6px 6px 0px #18191f;
+  background-size: 24px 24px;
+  background-image: 
+    linear-gradient(to right, rgba(24, 25, 31, 0.05) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(24, 25, 31, 0.05) 1px, transparent 1px);
+}
+
+.archive-top-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 2px solid rgba(24, 25, 31, 0.12);
+  padding-bottom: 16px;
+  margin-bottom: 24px;
+}
+
+.archive-brand-badge {
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  background: #f89c1e;
+  border: 2px solid #18191f;
+  box-shadow: 2px 2px 0px #18191f;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 900;
+  color: #fff;
+  font-size: 1.15rem;
+}
+
+.archive-title-group h3 {
+  font-size: 1.25rem;
+  font-weight: 900;
+  color: #18191f;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 0;
+}
+
+.archive-title-group p {
+  font-size: 0.85rem;
+  color: #525866;
+  margin: 4px 0 0 0;
+}
+
+/* 4 大標籤耳朵 (Folder Tabs) */
+.archive-tabs-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 8px;
+  position: relative;
+  z-index: 10;
+  margin-bottom: -2.5px;
+}
+
+.tab-ear-btn {
+  border: 2.5px solid #18191f;
+  border-bottom: none;
+  border-radius: 14px 14px 0 0;
+  background: #ffffff;
+  padding: 12px 14px;
+  text-align: left;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  user-select: none;
+  opacity: 0.82;
+}
+
+.tab-ear-btn:hover {
+  opacity: 1;
+}
+
+.tab-ear-btn.active {
+  opacity: 1;
+  box-shadow: 4px -3px 0px #18191f;
+  z-index: 20;
+}
+
+.tab-top-meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.72rem;
+  font-weight: 800;
+  margin-bottom: 4px;
+}
+
+.tab-count-pill {
+  background: rgba(0, 0, 0, 0.08);
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-size: 0.68rem;
+}
+
+.tab-title-text {
+  font-size: 0.92rem;
+  font-weight: 900;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.tab-desc-text {
+  font-size: 0.72rem;
+  opacity: 0.8;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  margin-top: 2px;
+}
+
+/* 檔案夾本體 (Folder Body) */
+.archive-body-container {
+  background: #ffffff;
+  border: 2.5px solid #18191f;
+  border-radius: 0 20px 20px 20px;
+  padding: 24px;
+  box-shadow: 5px 5px 0px #18191f;
+  position: relative;
+  z-index: 5;
+}
+
+.archive-path-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-bottom: 14px;
+  margin-bottom: 18px;
+  border-bottom: 1px solid rgba(24, 25, 31, 0.1);
+  font-size: 0.78rem;
+}
+
+.archive-path-label {
+  font-weight: 800;
+  color: #525866;
+  font-family: monospace;
+}
+
+.archive-items-list {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.archive-card {
+  display: block;
+  text-decoration: none;
+  background: #faf9f5;
+  border: 2px solid #18191f;
+  border-radius: 14px;
+  padding: 16px 18px;
+  box-shadow: 3px 3px 0px #18191f;
+  transition: all 0.15s ease;
+  color: inherit;
+}
+
+.archive-card:hover {
+  background: #ffffff;
+  transform: translate(-1px, -1px);
+  box-shadow: 4px 4px 0px #18191f;
+}
+
+.archive-card:active {
+  transform: translate(2px, 2px);
+  box-shadow: 1px 1px 0px #18191f;
+}
+
+.archive-card-meta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+
+.archive-card-tag {
+  font-size: 0.75rem;
+  font-weight: 800;
+  padding: 2px 8px;
+  border-radius: 20px;
+  border: 1px solid rgba(24, 25, 31, 0.2);
+  background: #fff;
+}
+
+.archive-card-time {
+  font-size: 0.75rem;
+  color: #525866;
+  font-family: monospace;
+}
+
+.archive-card-title {
+  font-size: 1.05rem;
+  font-weight: 900;
+  line-height: 1.45;
+  color: #18191f;
+  margin: 0 0 6px 0;
+}
+
+.archive-card-snippet {
+  font-size: 0.85rem;
+  line-height: 1.6;
+  color: #525866;
+  margin: 0;
+}
+
+/* ==========================================================================
+   9. 雙軌對話入口 (Dual Track CTA)
+   ========================================================================== */
+
+.dual-cta-box {
+  background: #ffffff;
+  border: 2.5px solid #18191f;
+  border-radius: 24px;
+  padding: 28px 24px;
+  box-shadow: 6px 6px 0px #18191f;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.cta-mode-tabs {
+  display: flex;
+  gap: 10px;
+  border-bottom: 2px solid rgba(24, 25, 31, 0.12);
+  padding-bottom: 14px;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+}
+
+.cta-mode-btn {
+  border: 2px solid #18191f;
+  border-radius: 10px;
+  padding: 8px 16px;
+  font-size: 0.85rem;
+  font-weight: 800;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  box-shadow: 2px 2px 0px #18191f;
+}
+
+.cta-mode-btn:active {
+  transform: translate(1px, 1px);
+  box-shadow: 1px 1px 0px #18191f;
+}
+
+.cta-mode-btn.active-coffee {
+  background: #083b87;
+  color: #ffffff;
+}
+
+.cta-mode-btn.active-biz {
+  background: #f89c1e;
+  color: #ffffff;
+}
+
+.cta-mode-btn.inactive {
+  background: #faf9f5;
+  color: #18191f;
+  opacity: 0.8;
+}
+
+.cta-mode-btn.inactive:hover {
+  opacity: 1;
+  background: #fff;
+}
+
+.cta-coffee-cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+  margin: 16px 0;
+}
+
+.cta-mini-card {
+  background: #faf9f5;
+  border: 2px solid #18191f;
+  border-radius: 12px;
+  padding: 14px;
+  box-shadow: 2px 2px 0px #18191f;
+}
+
+.cta-mini-card h4 {
+  font-size: 0.88rem;
+  font-weight: 900;
+  margin: 4px 0;
+  color: #18191f;
+}
+
+.cta-mini-card p {
+  font-size: 0.78rem;
+  color: #525866;
+  line-height: 1.5;
+  margin: 0;
+}
+
+.diagnostic-checkbox-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 12px 14px;
+  border-radius: 12px;
+  border: 2px solid #18191f;
+  background: #faf9f5;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  box-shadow: 2px 2px 0px #18191f;
+  user-select: none;
+}
+
+.diagnostic-checkbox-item:hover {
+  background: #ffffff;
+}
+
+.diagnostic-checkbox-item:active {
+  transform: translate(1px, 1px);
+  box-shadow: 1px 1px 0px #18191f;
+}
+
+.diagnostic-checkbox-item input[type="checkbox"] {
+  width: 18px;
+  height: 18px;
+  margin-top: 2px;
+  accent-color: #f89c1e;
+  cursor: pointer;
+}
+
+.diagnostic-feedback-box {
+  background: #f4f3ed;
+  border: 2px solid #18191f;
+  border-radius: 12px;
+  padding: 14px 16px;
+  margin-top: 14px;
+  font-size: 0.82rem;
+  line-height: 1.6;
+}
+
+/* ==========================================================================
+   10. 行動版極致舒適度調校 (@media max-width: 768px & 480px)
+   ========================================================================== */
+@media (max-width: 768px) {
+  .archive-wrapper {
+    padding: 20px 16px;
+    border-radius: 18px;
+  }
+
+  .archive-tabs-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 6px;
+  }
+
+  .tab-ear-btn {
+    border-radius: 10px;
+    border-bottom: 2.5px solid #18191f;
+    padding: 10px 12px;
+  }
+
+  .tab-ear-btn.active {
+    box-shadow: 2px 2px 0px #18191f;
+  }
+
+  .archive-body-container {
+    border-radius: 16px;
+    padding: 16px 14px;
+    margin-top: 10px;
+  }
+
+  .archive-card {
+    padding: 14px 14px;
+  }
+
+  .archive-card-title {
+    font-size: 0.98rem;
+  }
+
+  .dual-cta-box {
+    padding: 20px 16px;
+    border-radius: 18px;
+  }
+
+  .cta-coffee-cards {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+
+  .cta-mode-tabs {
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .cta-mode-btn {
+    width: 100%;
+    justify-content: center;
+    padding: 10px 14px;
+  }
+}
+
+
