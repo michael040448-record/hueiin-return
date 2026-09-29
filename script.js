@@ -272,167 +272,335 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
   // =========================================================================
-  // 6. 預約與商務洽詢表單 (Formspree 異步寄信)
+  // 6. 思考檔案庫資料夾系統 (The Archive Collections System)
   // =========================================================================
-  const contactForm = document.getElementById('contactForm');
-  const submitBtn = document.getElementById('submitBtn');
-  const formStatus = document.getElementById('formStatus');
+  const archiveTabs = document.querySelectorAll('.tab-ear-btn');
+  const archiveFolderDot = document.getElementById('archiveFolderDot');
+  const archiveFolderPath = document.getElementById('archiveFolderPath');
+  const archiveFolderStatus = document.getElementById('archiveFolderStatus');
+  const archiveItemsList = document.getElementById('archiveItemsList');
+  const archiveMascotTrigger = document.getElementById('archiveMascotTrigger');
+  const archiveMascotHead = document.getElementById('archiveMascotHead');
 
-  if (contactForm && submitBtn && formStatus) {
-    contactForm.addEventListener('submit', async (e) => {
+  const archiveData = {
+    cases: {
+      path: 'MANUFACTURING CASES · 傳產出海實戰',
+      color: '#f89c1e',
+      status: '● 旗艦專案檔案',
+      items: [
+        {
+          tag: '傳產出海 · 晴雨窗實錄',
+          title: '在台灣，廉價的外貼式晴雨窗是贈品，但我們想把它做成精密工藝',
+          desc: '比德堡內嵌式實戰：打破低階贈品心智，以精密骨科手術級導角出海北美，重塑高於市價 3 倍品類。',
+          meta: '約 6 分鐘閱讀 · 蘇哲遠',
+          url: 'records/car-window-deflector.html'
+        },
+        {
+          tag: '跨境電商 · 官方集訓',
+          title: '剛退伍接電商投廣，北上亞馬遜官方集訓：理工人的「開車指標論」',
+          desc: '跳脫傳統免洗投流話術，拆解曝光率、點擊率與轉換率的連動矩陣，為傳產建立第一座造血飛輪。',
+          meta: '約 5 分鐘閱讀 · 蘇哲遠',
+          url: 'records/amazon-algorithm-log.html'
+        }
+      ]
+    },
+    books: {
+      path: 'BOOK CLUB · 哲遠讀書會',
+      color: '#083b87',
+      status: '● 每週讀書會精選推薦',
+      items: [
+        {
+          tag: '經典商管 · 鴻溝理論',
+          title: '《跨越鴻溝》（Crossing the Chasm）：傳產二代在創新出海時，最容易踩空的死蔭幽谷',
+          desc: '早期採用者與主流市場之間的致命斷層。如何用垂直利基點突破保守市場的信任防線？',
+          meta: '讀書會第 14 期精華 · 約 8 分鐘',
+          url: 'records/article-template.html'
+        },
+        {
+          tag: '商業思維 · 賽局定價',
+          title: '《競合理念》讀後感：不要跟對手打零和割喉戰，改寫賽局的五大要素 (PARTS)',
+          desc: '製造業老闆最常問：「別人賣 300 我賣 900 怎麼贏？」這本書給出了數學級的優雅答案。',
+          meta: '讀書會推薦必讀 · 約 7 分鐘',
+          url: 'records/article-template.html'
+        }
+      ]
+    },
+    vlogs: {
+      path: 'FOUNDER VLOGS · 創業隨錄 ✕ 影音',
+      color: '#6600ff',
+      status: '● 像朋友圈一樣走心的真實錄像',
+      items: [
+        {
+          tag: '創業真誠隨錄 · 影音',
+          title: '【短影 01】中山機電退伍創立暉映的第一年：那些在工廠機台旁沒說出口的焦慮',
+          desc: '拋棄包裝過的成功學光環，真實記錄創業初期的碰撞、與傳產長輩溝通的挫折，以及如何找回節奏。',
+          meta: '🎬 影片時長 08:24 · 觀看記錄',
+          url: 'records/article-template.html'
+        },
+        {
+          tag: '對話實錄 · 創業隨錄',
+          title: '【短影 02】為什麼我堅持每週辦讀書會？「向內沉澱」是我在浮躁市場裡唯一的護城河',
+          desc: '不是為了打卡社交，而是為了在每天處理雜亂外部資訊時，保有一段絕對冷靜的深度思考時間。',
+          meta: '🎬 影片時長 06:15 · 觀看記錄',
+          url: 'records/article-template.html'
+        }
+      ]
+    },
+    thinking: {
+      path: 'MODELS & LOGIC · 賽局與工程思維',
+      color: '#21c110',
+      status: '● 理工邏輯與決策模型',
+      items: [
+        {
+          tag: '思維模型 · 沉沒成本',
+          title: '賽局、記憶與真實：大腦如何面對創傷與影像的膜',
+          desc: '在重複發生的賽局中，記憶是打破雙輸困境的唯一解藥。理工人如何做人生與商業決策？',
+          meta: '約 7 分鐘閱讀 · 蘇哲遠',
+          url: 'records/game-theory-memory.html'
+        },
+        {
+          tag: '工程邏輯 · 營運閉環',
+          title: '不用死背語法：為什麼創業家都該具備「系統架構級」的 IT 思維？',
+          desc: '將公司業務流程視為一張大型狀態機，降低摩擦力、自動化沉澱資產，拒絕無效外包。',
+          meta: '約 4 分鐘閱讀 · 蘇哲遠',
+          url: 'records/article-template.html'
+        }
+      ]
+    }
+  };
+
+  const panelMap = {
+    cases: document.getElementById('panelCases'),
+    books: document.getElementById('panelBooks'),
+    vlogs: document.getElementById('panelVlogs'),
+    thinking: document.getElementById('panelThinking')
+  };
+
+  function renderArchiveFolder(key) {
+    const folder = archiveData[key];
+    if (!folder) return;
+
+    if (archiveFolderDot) archiveFolderDot.style.backgroundColor = folder.color;
+    if (archiveFolderPath) archiveFolderPath.textContent = folder.path;
+    if (archiveFolderStatus) {
+      archiveFolderStatus.textContent = folder.status;
+      archiveFolderStatus.style.color = folder.color;
+    }
+
+    // 切換靜態面板顯隱 (100% 零空白延遲，Googlebot 秒收錄)
+    let panelFound = false;
+    Object.keys(panelMap).forEach(k => {
+      const panel = panelMap[k];
+      if (panel) {
+        if (k === key) {
+          panel.style.display = 'flex';
+          panelFound = true;
+        } else {
+          panel.style.display = 'none';
+        }
+      }
+    });
+
+    // 若無靜態面板但有動態容器，則動態渲染降級處理
+    if (!panelFound && archiveItemsList) {
+      archiveItemsList.innerHTML = folder.items.map(item => `
+        <a href="${item.url}" class="archive-card">
+          <div class="archive-card-meta">
+            <span class="archive-card-tag" style="color: ${folder.color}; border-color: ${folder.color}50;">
+              ${item.tag}
+            </span>
+            <span class="archive-card-time">${item.meta}</span>
+          </div>
+          <h3 class="archive-card-title">${item.title}</h3>
+          <p class="archive-card-snippet">${item.desc}</p>
+        </a>
+      `).join('');
+    }
+  }
+
+  archiveTabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      const folderKey = tab.getAttribute('data-folder');
+      archiveTabs.forEach(t => {
+        t.classList.remove('active');
+        t.style.backgroundColor = '#ffffff';
+        t.style.color = '#18191f';
+        const topMeta = t.querySelector('.tab-top-meta span:first-child');
+        const countPill = t.querySelector('.tab-count-pill');
+        const titleText = t.querySelector('.tab-title-text');
+        if (topMeta) topMeta.style.color = '';
+        if (countPill) countPill.style.color = '';
+        if (titleText) titleText.style.color = '';
+      });
+
+      tab.classList.add('active');
+      const targetColor = archiveData[folderKey].color;
+      tab.style.backgroundColor = targetColor;
+      tab.style.color = '#ffffff';
+
+      const topMeta = tab.querySelector('.tab-top-meta span:first-child');
+      const countPill = tab.querySelector('.tab-count-pill');
+      const titleText = tab.querySelector('.tab-title-text');
+      if (topMeta) topMeta.style.color = '#ffffff';
+      if (countPill) {
+        countPill.style.color = '#ffffff';
+        countPill.style.backgroundColor = 'rgba(0,0,0,0.25)';
+      }
+      if (titleText) titleText.style.color = '#ffffff';
+
+      renderArchiveFolder(folderKey);
+    });
+  });
+
+  // 初始化載入 Cases 分類
+  renderArchiveFolder('cases');
+
+  if (archiveMascotTrigger && archiveMascotHead) {
+    archiveMascotTrigger.addEventListener('click', () => {
+      archiveMascotHead.style.transform = 'scale(1.2) rotate(12deg)';
+      setTimeout(() => {
+        archiveMascotHead.style.transform = 'scale(1) rotate(0deg)';
+      }, 250);
+    });
+  }
+
+
+  // =========================================================================
+  // 7. 雙軌對話模式切換與即時診斷 (Dual Track CTA & Diagnostics)
+  // =========================================================================
+  window.switchCtaMode = function(mode) {
+    const btnCoffee = document.getElementById('btnModeCoffee');
+    const btnBiz = document.getElementById('btnModeBiz');
+    const panelCoffee = document.getElementById('ctaCoffeePanel');
+    const panelBiz = document.getElementById('ctaBizPanel');
+
+    if (mode === 'coffee') {
+      if (btnCoffee) {
+        btnCoffee.className = 'cta-mode-btn active-coffee';
+      }
+      if (btnBiz) {
+        btnBiz.className = 'cta-mode-btn inactive';
+      }
+      if (panelCoffee) panelCoffee.style.display = 'block';
+      if (panelBiz) panelBiz.style.display = 'none';
+    } else {
+      if (btnBiz) {
+        btnBiz.className = 'cta-mode-btn active-biz';
+      }
+      if (btnCoffee) {
+        btnCoffee.className = 'cta-mode-btn inactive';
+      }
+      if (panelBiz) panelBiz.style.display = 'block';
+      if (panelCoffee) panelCoffee.style.display = 'none';
+    }
+  };
+
+  window.calcSiteDiagnostic = function() {
+    const checked = Array.from(document.querySelectorAll('input[name="bizPain"]:checked'));
+    const resultBox = document.getElementById('siteDiagnosticResult');
+    const textEl = document.getElementById('siteDiagnosticText');
+    const hiddenPains = document.getElementById('bizDiagnosedPains');
+
+    if (!resultBox || !textEl) return;
+
+    if (checked.length === 0) {
+      resultBox.style.display = 'none';
+      if (hiddenPains) hiddenPains.value = '尚未勾選';
+      return;
+    }
+
+    resultBox.style.display = 'block';
+    const insights = [];
+    const values = checked.map(c => c.value);
+
+    if (values.includes('pricing')) {
+      insights.push('<strong>【品類重塑】</strong>座標軸放錯市場。建議借鏡比德堡模式，以精密規格出海北美/日本，擺脫國內贈品削價戰。');
+    }
+    if (values.includes('amazon')) {
+      insights.push('<strong>【跨境出海】</strong>建立一套能自主造血的「開車指標」數據飛輪，不盲目依賴外部代操。');
+    }
+    if (values.includes('agency')) {
+      insights.push('<strong>【現場轉譯】</strong>你急需能聽懂 CNC、模具與導角公差的同頻翻譯官，把機台上的硬實力轉譯為國際買家心智。');
+    }
+    if (values.includes('system')) {
+      insights.push('<strong>【數位造血】</strong>以二代陪跑視角導入 AI 工作流與知識庫，讓製造業內部團隊長出軟實力。');
+    }
+
+    textEl.innerHTML = insights.join('<br class="my-1">');
+    if (hiddenPains) {
+      hiddenPains.value = values.join(', ');
+    }
+  };
+
+
+  // =========================================================================
+  // 8. 雙表單 Formspree 異步寄信處理 (Coffee Form & Biz Form)
+  // =========================================================================
+  function bindFormspree(formId, submitBtnId, statusId, successMsg) {
+    const form = document.getElementById(formId);
+    const btn = document.getElementById(submitBtnId);
+    const status = document.getElementById(statusId);
+
+    if (!form || !btn || !status) return;
+
+    form.addEventListener('submit', async (e) => {
       e.preventDefault();
+      const origHtml = btn.innerHTML;
+      btn.disabled = true;
+      btn.innerHTML = '<span>⏳ 傳送中，請稍候...</span>';
+      status.style.display = 'none';
 
-      // 按鈕載入狀態反饋
-      const originalBtnHtml = submitBtn.innerHTML;
-      submitBtn.disabled = true;
-      submitBtn.innerHTML = '<span>⏳ 專案需求傳送中，請稍候...</span>';
-      formStatus.style.display = 'none';
-
-      const formData = new FormData(contactForm);
+      const formData = new FormData(form);
 
       try {
-        const response = await fetch(contactForm.action, {
+        const res = await fetch(form.action, {
           method: 'POST',
           body: formData,
-          headers: {
-            'Accept': 'application/json'
-          }
+          headers: { 'Accept': 'application/json' }
         });
 
-        if (response.ok) {
-          contactForm.reset();
-          submitBtn.innerHTML = '<span>✅ 需求已成功送達！</span>';
-          submitBtn.disabled = false;
+        if (res.ok) {
+          form.reset();
+          btn.innerHTML = '<span>✅ 預約已成功送出！</span>';
+          btn.disabled = false;
 
-          formStatus.className = 'form-status status-success';
-          formStatus.innerHTML = '<strong>🎉 感謝您的預約！專案需求已順利寄達蘇哲遠的信箱。</strong><br>我將在 24 小時內仔細評估您的產業需求，並透過 Email 與您聯繫！';
-          formStatus.style.display = 'block';
+          status.className = 'form-status status-success';
+          status.innerHTML = successMsg;
+          status.style.display = 'block';
 
-          // 觸發慶祝火花
-          const rect = submitBtn.getBoundingClientRect();
-          createSparkBurst(rect.left + rect.width / 2, rect.top, 60);
+          // 慶祝火花
+          const rect = btn.getBoundingClientRect();
+          createSparkBurst(rect.left + rect.width / 2, rect.top, 50);
 
-          setTimeout(() => {
-            submitBtn.innerHTML = originalBtnHtml;
-          }, 5000);
+          setTimeout(() => { btn.innerHTML = origHtml; }, 5000);
         } else {
-          const data = await response.json();
-          if (data && data.errors) {
-            throw new Error(data.errors.map(err => err.message).join(', '));
-          } else {
-            throw new Error('伺服器目前忙碌中');
-          }
+          throw new Error('伺服器忙碌中');
         }
       } catch (err) {
-        submitBtn.disabled = false;
-        submitBtn.innerHTML = '<span>重新送出需求</span>';
-        formStatus.className = 'form-status status-error';
-        formStatus.innerHTML = `<strong>⚠️ 傳送時發生問題：${err.message || '請稍候再試'}</strong><br>您也可以直接透過 Threads (@record_learning_lab) 或 IG 私訊聯繫哲遠！`;
-        formStatus.style.display = 'block';
+        btn.disabled = false;
+        btn.innerHTML = '<span>重新送出</span>';
+        status.className = 'form-status status-error';
+        status.innerHTML = `<strong>⚠️ 傳送時發生問題：${err.message || '請稍候再試'}</strong><br>您也可以直接私訊 Threads (@record_learning_lab) 聯繫哲遠！`;
+        status.style.display = 'block';
       }
     });
   }
 
-  // =========================================================================
-  // 7. 思考專欄動態輪播與分類篩選 (Records Carousel & Filter System)
-  // =========================================================================
-  const recordsSlider = document.getElementById('recordsSlider');
-  const recordsTrack = document.getElementById('recordsTrack');
-  const recordsPrevBtn = document.getElementById('recordsPrevBtn');
-  const recordsNextBtn = document.getElementById('recordsNextBtn');
-  const filterChips = document.querySelectorAll('#recordsFilterChips .filter-chip');
-  const recordCards = document.querySelectorAll('.record-card');
-  const recordsDotsContainer = document.getElementById('recordsDots');
+  // 綁定 Coffee Chat 表單
+  bindFormspree(
+    'coffeeForm',
+    'coffeeSubmitBtn',
+    'coffeeFormStatus',
+    '<strong>🎉 感謝你的預約！Coffee Chat 邀請已順利送達哲遠的信箱。</strong><br>哲遠會親自閱讀你的留言，並在 24 小時內回信與你確認線上或喝咖啡的時間！'
+  );
 
-  if (recordsSlider && recordsTrack) {
-    // 取得當前滾動步進距離 (卡片寬度 + gap)
-    const getScrollAmount = () => {
-      const firstCard = recordsSlider.querySelector('.record-card:not([style*="display: none"])');
-      if (firstCard) {
-        return firstCard.offsetWidth + 24;
-      }
-      return 340;
-    };
-
-    if (recordsPrevBtn) {
-      recordsPrevBtn.addEventListener('click', () => {
-        recordsSlider.scrollBy({ left: -getScrollAmount(), behavior: 'smooth' });
-      });
-    }
-
-    if (recordsNextBtn) {
-      recordsNextBtn.addEventListener('click', () => {
-        recordsSlider.scrollBy({ left: getScrollAmount(), behavior: 'smooth' });
-      });
-    }
-
-    // 建立與更新指示圓點 (Dots)
-    function updateDots() {
-      if (!recordsDotsContainer) return;
-      recordsDotsContainer.innerHTML = '';
-      const visibleCards = Array.from(recordCards).filter(c => c.style.display !== 'none');
-      if (visibleCards.length <= 1) return;
-
-      visibleCards.forEach((card, idx) => {
-        const dot = document.createElement('button');
-        dot.className = `carousel-dot ${idx === 0 ? 'active' : ''}`;
-        dot.setAttribute('aria-label', `滑動到第 ${idx + 1} 篇文章`);
-        dot.addEventListener('click', () => {
-          card.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'start' });
-        });
-        recordsDotsContainer.appendChild(dot);
-      });
-    }
-
-    // 滾動同步切換高亮圓點
-    let scrollTimeout;
-    recordsSlider.addEventListener('scroll', () => {
-      clearTimeout(scrollTimeout);
-      scrollTimeout = setTimeout(() => {
-        const visibleCards = Array.from(recordCards).filter(c => c.style.display !== 'none');
-        const dots = recordsDotsContainer.querySelectorAll('.carousel-dot');
-        if (!dots.length) return;
-
-        const sliderRect = recordsSlider.getBoundingClientRect();
-        let closestIdx = 0;
-        let minDiff = Infinity;
-
-        visibleCards.forEach((card, idx) => {
-          const cardRect = card.getBoundingClientRect();
-          const diff = Math.abs(cardRect.left - sliderRect.left);
-          if (diff < minDiff) {
-            minDiff = diff;
-            closestIdx = idx;
-          }
-        });
-
-        dots.forEach((d, i) => d.classList.toggle('active', i === closestIdx));
-      }, 60);
-    });
-
-    // 專欄分類切換 (Filter Chips)
-    filterChips.forEach(chip => {
-      chip.addEventListener('click', () => {
-        filterChips.forEach(c => c.classList.remove('active'));
-        chip.classList.add('active');
-
-        const filter = chip.getAttribute('data-filter');
-        recordCards.forEach(card => {
-          const category = card.getAttribute('data-category');
-          if (filter === 'all' || category === filter) {
-            card.style.display = 'flex';
-            card.style.opacity = '1';
-          } else {
-            card.style.display = 'none';
-          }
-        });
-
-        recordsSlider.scrollTo({ left: 0, behavior: 'smooth' });
-        updateDots();
-      });
-    });
-
-    updateDots();
-  }
+  // 綁定製造業體檢表單
+  bindFormspree(
+    'bizForm',
+    'bizSubmitBtn',
+    'bizFormStatus',
+    '<strong>🎉 感謝您的體檢工單！專案資訊已順利寄達蘇哲遠的信箱。</strong><br>哲遠將以理工思維評估您的工廠瓶頸，並於 24 小時內提供專屬回覆！'
+  );
 
 });
+
