@@ -292,14 +292,14 @@ document.addEventListener('DOMContentLoaded', () => {
           tag: '傳產出海 · 晴雨窗實錄',
           title: '在台灣，廉價的外貼式晴雨窗是贈品，但我們想把它做成精密工藝',
           desc: '比德堡內嵌式實戰：打破低階贈品心智，以精密骨科手術級導角出海北美，重塑高於市價 3 倍品類。',
-          meta: '約 6 分鐘閱讀 · 蘇哲遠',
+          meta: '約 6 分鐘閱讀',
           url: 'records/car-window-deflector.html'
         },
         {
           tag: '跨境電商 · 官方集訓',
           title: '剛退伍接電商投廣，北上亞馬遜官方集訓：理工人的「開車指標論」',
           desc: '跳脫傳統免洗投流話術，拆解曝光率、點擊率與轉換率的連動矩陣，為傳產建立第一座造血飛輪。',
-          meta: '約 5 分鐘閱讀 · 蘇哲遠',
+          meta: '約 5 分鐘閱讀',
           url: 'records/amazon-algorithm-log.html'
         }
       ]
@@ -355,14 +355,14 @@ document.addEventListener('DOMContentLoaded', () => {
           tag: '思維模型 · 沉沒成本',
           title: '賽局、記憶與真實：大腦如何面對創傷與影像的膜',
           desc: '在重複發生的賽局中，記憶是打破雙輸困境的唯一解藥。理工人如何做人生與商業決策？',
-          meta: '約 7 分鐘閱讀 · 蘇哲遠',
+          meta: '約 7 分鐘閱讀',
           url: 'records/game-theory-memory.html'
         },
         {
           tag: '工程邏輯 · 營運閉環',
           title: '不用死背語法：為什麼創業家都該具備「系統架構級」的 IT 思維？',
           desc: '將公司業務流程視為一張大型狀態機，降低摩擦力、自動化沉澱資產，拒絕無效外包。',
-          meta: '約 4 分鐘閱讀 · 蘇哲遠',
+          meta: '約 4 分鐘閱讀',
           url: 'records/article-template.html'
         }
       ]
@@ -580,7 +580,7 @@ document.addEventListener('DOMContentLoaded', () => {
         btn.disabled = false;
         btn.innerHTML = '<span>重新送出</span>';
         status.className = 'form-status status-error';
-        status.innerHTML = `<strong>⚠️ 傳送時發生問題：${err.message || '請稍候再試'}</strong><br>您也可以直接私訊 Threads (@record_learning_lab) 聯繫哲遠！`;
+        status.innerHTML = `<strong>⚠️ 傳送時發生問題：${err.message || '請稍候再試'}</strong><br>您也可以直接私訊 Threads (@record_learning_lab) 與我們聯繫！`;
         status.style.display = 'block';
       }
     });
@@ -591,7 +591,7 @@ document.addEventListener('DOMContentLoaded', () => {
     'coffeeForm',
     'coffeeSubmitBtn',
     'coffeeFormStatus',
-    '<strong>🎉 感謝你的預約！Coffee Chat 邀請已順利送達哲遠的信箱。</strong><br>哲遠會親自閱讀你的留言，並在 24 小時內回信與你確認線上或喝咖啡的時間！'
+    '<strong>🎉 感謝你的預約！Coffee Chat 邀請已順利送達。</strong><br>我們會親自閱讀你的留言，並在 24 小時內回信與你確認線上或喝咖啡的時間！'
   );
 
   // 綁定製造業體檢表單
@@ -599,7 +599,7 @@ document.addEventListener('DOMContentLoaded', () => {
     'bizForm',
     'bizSubmitBtn',
     'bizFormStatus',
-    '<strong>🎉 感謝您的體檢工單！專案資訊已順利寄達蘇哲遠的信箱。</strong><br>哲遠將以理工思維評估您的工廠瓶頸，並於 24 小時內提供專屬回覆！'
+    '<strong>🎉 感謝您的體檢工單！專案資訊已順利送達。</strong><br>我們將以理工思維評估您的工廠瓶頸，並於 24 小時內提供專屬回覆！'
   );
 
 });
